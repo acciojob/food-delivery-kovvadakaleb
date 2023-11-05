@@ -3,15 +3,9 @@ package com.driver.model.request;
 public class OrderDetailsRequestModel {
 
 	private String[] items;
-	private float cost;
-	private String userId;
-	public float getCost() {
-		return cost;
-	}
 
-	public void setCost(float cost) {
-		this.cost = cost;
-	}
+	private String userId;
+
 
 	public String[] getItems() {
 		return items;

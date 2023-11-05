@@ -1,11 +1,13 @@
 package com.driver.io.entity;
 
-import java.io.Serializable;
+import org.hibernate.annotations.IndexColumn;
+import org.springframework.beans.factory.annotation.Value;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity(name = "orders")
 public class OrderEntity {
@@ -20,7 +22,11 @@ public class OrderEntity {
 	@Column(nullable = false)
 	private float cost;
 
-	@Column(nullable = false)
+    @ElementCollection
+	@CollectionTable(name = "order_items",joinColumns = @JoinColumn(name = "order_id"))
+	@Column(name = "item",nullable = false)
+	@IndexColumn(name = "S.No")
+	@Lob
 	private String[] items;
 
 	@Column(nullable = false)
@@ -28,6 +34,18 @@ public class OrderEntity {
 	
 	@Column(nullable = false)
 	private boolean status;
+
+	@ManyToOne
+	@JoinColumn
+	UserEntity userEntity;
+
+	public UserEntity getUserEntity() {
+		return userEntity;
+	}
+
+	public void setUserEntity(UserEntity userEntity) {
+		this.userEntity = userEntity;
+	}
 
 	public long getId() {
 		return id;

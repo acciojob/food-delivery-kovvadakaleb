@@ -2,6 +2,8 @@ package com.driver.service;
 
 import java.util.List;
 
+import com.driver.model.request.UserDetailsRequestModel;
+import com.driver.model.response.UserResponse;
 import com.driver.shared.dto.UserDto;
 
 /**
@@ -15,4 +17,6 @@ public interface UserService{
 	UserDto updateUser(String userId, UserDto user) throws Exception;
 	void deleteUser(String userId) throws Exception;
 	List<UserDto> getUsers();
+
+
 }

@@ -1,5 +1,8 @@
 package com.driver.shared.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+
 public class UserDto{
 
 	private long id;
